@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         } else {
             resultArea.text = (resultArea.text ?? "") + String((sender as AnyObject).tag)
         }
-        accountOnScreen = Double(resultArea.text ?? "")!
+        accountOnScreen = Double(resultArea.text ?? "") ?? 0
     }
     
     @IBAction func calculatingButtons(_ sender: UIButton) {
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             && resultArea.text != "÷"
             && sender.tag != 10
             && sender.tag != 15 {
-            firstValue = Double(resultArea.text ?? "")!
+            firstValue = Double(resultArea.text ?? "") ?? 0
             if sender.tag == 11
             { //деление
                 resultArea.text = "÷"
@@ -86,13 +86,13 @@ class ViewController: UIViewController {
             && sender.tag != 12
             && sender.tag != 13
             && sender.tag != 14 {
-            resultArea.text = String (Double(resultArea.text ?? "")!  * -1 )
+            resultArea.text = String ((Double(resultArea.text ?? "") ?? 0)  * -1 )
         }
     }
     
     @IBAction func precentageButton(_ sender: UIButton) {
         if resultArea.text != ""{
-            resultArea.text = String(Double(resultArea.text ?? "")! / 100 )
+            resultArea.text = String((Double(resultArea.text ?? "") ?? 0) / 100 )
             
         }
     }
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
             && sender.tag != 13
             && sender.tag != 14
             && sender.tag != 15 {
-            resultArea.text = String(Double(resultArea.text ?? "")!)
+            resultArea.text = String(Double(resultArea.text ?? "") ?? 0)
             var label = resultArea.text
             if (label ?? "").count > 1 {
                 label?.removeLast()
